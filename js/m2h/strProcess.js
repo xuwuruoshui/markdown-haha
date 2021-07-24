@@ -5,16 +5,21 @@ import h4 from './module/h4.js'
 import h5 from './module/h5.js'
 import h6 from './module/h6.js'
 import p from './module/p.js'
+import b from './module/b.js'
 
 // 转换的标识符对应关系
-let format = {
-  "#":h1,
-  "##":h2,
-  "###":h3,
-  "####":h4,
-  "#####":h5,
-  "######":h6,
-  ">":p
+let outside = {
+  "#": h1,
+  "##": h2,
+  "###": h3,
+  "####": h4,
+  "#####": h5,
+  "######": h6,
+  ">": p
 }
 
-export default format
+let inside = {
+  "**": b
+}
+
+export { outside, inside }
