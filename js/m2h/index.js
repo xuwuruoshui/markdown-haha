@@ -24,8 +24,7 @@ let m2h = (msg)=>{
       currentMark = mark
       currentElement = format[mark](content,element,false)
     }else{
-      if(lines[index-1]!==""){
-        console.log(1);
+      if(lines[index-1]!=="" && line!=""){
         format[currentMark](line,currentElement,true)
       }else{
         element.innerHTML+=line
