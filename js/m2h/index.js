@@ -35,20 +35,30 @@ let m2h = (msg) => {
       currentMark = mark
       currentElement = outside[mark](content, element, again)
     } else {
-      if (currentMark != null && lines[index - 1] !== "" && line != "") {
-        again = true;
-        // 上一段未处理完，继续处理标识符
-        outside[currentMark](line, currentElement, again)
-      }
-      else {
-        // 空白处处理
-        currentMark = null
-        currentElement = null
-        // 不为空说明已有上文,为true接着拼接
-        again = (lines[index - 1] !== "")
+      // 上一段未处理完，继续处理标识符
 
-        noTag(line, element, again)
+      if (line != "") {
+
+        if (currentMark != null && lines[index - 1] !== "") {
+          again = true;
+          outside[currentMark](line, currentElement, again)
+          return
+        }
+
+        currentMark = null
+
+        // 上一行为空
+        if (lines[index - 1] === "") {
+          again = false
+          currentElement = noTag(line, element, again)
+        } else {
+          again = true
+          currentElement = noTag(line, currentElement, again)
+        }
+
+
       }
+
     }
   })
 
