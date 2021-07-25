@@ -1,4 +1,4 @@
-import { inside, outside } from './strProcess.js'
+import { inside, outside, noTag } from './strProcess.js'
 
 // 获取当前元素
 let element = document.getElementById("content");
@@ -8,10 +8,12 @@ let m2h = (msg) => {
   // 按行分割字符串
   let lines = msg.split("\r\n")
 
-  // 当前行正在处理的元素
+  // 当前行正在处理的标识符
   let currentMark = null;
+  // 当前行正在处理的DOM
   let currentElement = null;
-
+  // 当前行是否承接上一行
+  let again = false;
 
   // 遍历每行
   lines.forEach((line, index) => {
@@ -28,16 +30,25 @@ let m2h = (msg) => {
 
     // 判断是否包含有转换的标识符
     if (outside.hasOwnProperty(mark)) {
+      again = false;
       let content = line.substr(line.indexOf(" ") + 1)
       currentMark = mark
-      currentElement = outside[mark](content, element, false)
+      currentElement = outside[mark](content, element, again)
     } else {
-      if (lines[index - 1] !== "" && line != "") {
-        outside[currentMark](line, currentElement, true)
-      } else {
-        element.innerHTML += line
+      if (currentMark != null && lines[index - 1] !== "" && line != "") {
+        again = true;
+        // 上一段未处理完，继续处理标识符
+        outside[currentMark](line, currentElement, again)
       }
+      else {
+        // 空白处处理
+        currentMark = null
+        currentElement = null
+        // 不为空说明已有上文,为true接着拼接
+        again = (lines[index - 1] !== "")
 
+        noTag(line, element, again)
+      }
     }
   })
 

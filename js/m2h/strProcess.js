@@ -5,7 +5,11 @@ import h4 from './module/h4.js'
 import h5 from './module/h5.js'
 import h6 from './module/h6.js'
 import p from './module/p.js'
-import b from './module/b.js'
+import strong from './module/strong.js'
+import del from './module/del.js'
+import em from './module/em.js'
+
+import noTag from './module/noTag.js'
 
 // 转换的标识符对应关系
 let outside = {
@@ -19,7 +23,10 @@ let outside = {
 }
 
 let inside = {
-  "**": b
+  "**": strong,
+  "~~": del,
+  "_": em
 }
 
-export { outside, inside }
+
+export { outside, inside, noTag }
