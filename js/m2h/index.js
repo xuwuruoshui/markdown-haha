@@ -31,9 +31,8 @@ let m2h = (msg) => {
     // 判断是否包含有转换的标识符
     if (outside.hasOwnProperty(mark)) {
       again = false;
-      let content = line.substr(line.indexOf(" ") + 1)
       currentMark = mark
-      currentElement = outside[mark](content, element, again)
+      currentElement = outside[mark](line, element, again)
     } else {
       // 上一段未处理完，继续处理标识符
 
