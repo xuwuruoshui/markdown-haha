@@ -15,7 +15,7 @@ let m2h = (msg) => {
   // 当前行是否承接上一行
   let again = false;
 
-  // 遍历每行
+
   lines.forEach((line, index) => {
 
     // 预处理，含有加粗,下划线,删除线的元素标签设置上
@@ -26,13 +26,24 @@ let m2h = (msg) => {
     }
 
     // 以空格结尾
-    let mark = line.substr(0, line.indexOf(" "))
+    let trimLeft = new RegExp("^ *")
+    let tempLine = line.replace(trimLeft, "");
+    let mark = tempLine.substr(0, tempLine.indexOf(" "))
+    let isContainMark = false
+    let key
+    for (key in outside) {
+      let reg = new RegExp(key)
+      if (reg.test(mark)) {
+        isContainMark = true
+        break;
+      }
+    }
 
     // 判断是否包含有转换的标识符
-    if (outside.hasOwnProperty(mark)) {
+    if (isContainMark) {
       again = false;
-      currentMark = mark
-      currentElement = outside[mark](line, element, again)
+      currentMark = key
+      currentElement = outside[key](line, element, again)
     } else {
       // 上一段未处理完，继续处理标识符
 
