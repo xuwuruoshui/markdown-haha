@@ -4,6 +4,7 @@ import strong from './module/strong.js'
 import del from './module/del.js'
 import em from './module/em.js'
 import ul from './module/ul.js'
+import ol from './module/ol.js'
 
 import noTag from './module/p.js'
 
@@ -11,7 +12,8 @@ import noTag from './module/p.js'
 let outside = {
   "^[#]{0,5}#$": h,
   "^>*>$": blockquote,
-  "^ *-$": ul
+  "^ *-$": ul,
+  "^[0-9 ]*.$": ol
 }
 
 let inside = {
