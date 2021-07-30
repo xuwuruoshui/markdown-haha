@@ -34,3 +34,7 @@ paragraphs 段落:**strong 加粗**，<u>underline</u>。**_strong:em 加粗:斜
     2. hsahfa
 2. test2
 3. > ## fasdf
+
+| 表头1 | 表头2 | 表头3 |
+| :-   |   :- :   |  -:     |
+| test1| test2|test3|

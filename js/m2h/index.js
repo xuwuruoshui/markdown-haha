@@ -10,8 +10,10 @@ let m2h = (msg) => {
 
   // 当前行正在处理的标识符
   let currentMark = null;
+
   // 当前行正在处理的DOM
   let currentElement = null;
+
   // 当前行是否承接上一行
   let again = false;
 
@@ -39,14 +41,14 @@ let m2h = (msg) => {
       }
     }
 
-    // 判断是否包含有转换的标识符
+    // 判断是否包含有转换的标签
     if (isContainMark) {
       again = false;
       currentMark = key
       currentElement = outside[key](line, element, again)
     } else {
-      // 上一段未处理完，继续处理标识符
 
+      // 上一段未处理完，接着之前的标签进行处理
       if (line != "") {
 
         if (currentMark != null && lines[index - 1] !== "") {
@@ -56,8 +58,7 @@ let m2h = (msg) => {
         }
 
         currentMark = null
-
-        // 上一行为空
+        // 调用noTag作为放入p标签
         if (lines[index - 1] === "") {
           again = false
           currentElement = noTag(line, element, again)
@@ -65,8 +66,6 @@ let m2h = (msg) => {
           again = true
           currentElement = noTag(line, currentElement, again)
         }
-
-
       }
 
     }
