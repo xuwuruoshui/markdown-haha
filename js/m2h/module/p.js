@@ -8,7 +8,7 @@ export default (line, element, again) => {
     pElement.innerHTML += line
   } else {
     pElement = element
-    element.innerHTML += line
+    element.innerHTML += ("<br>"+line)
   }
   return pElement
 }

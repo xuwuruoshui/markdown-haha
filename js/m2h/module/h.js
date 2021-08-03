@@ -6,5 +6,5 @@ export default (line, element) => {
   h1Element.innerText = content
 
   element.appendChild(h1Element)
-
+  return h1Element
 }

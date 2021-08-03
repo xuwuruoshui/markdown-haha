@@ -20,8 +20,8 @@ export default (line, element) => {
   } else {
     tableElemnt = element.lastChild
 
+    // 匹配 |:-:|,|-|
     let tableReg = new RegExp("^\\|(\\s)*:?-*:?(\\s)*\\|$")
-
     if (tableReg.test(line.substr(0, line.indexOf("|", 1) + 1))) {
       tableElemnt.style.display = ""
       tableElemnt.border = "1px"

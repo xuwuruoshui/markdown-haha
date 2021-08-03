@@ -18,6 +18,6 @@ import ajax from './request/ajax.js'
 // Old compatibility code, no longer needed.
 let content = document.getElementById("content")
 
-ajax.get("../source/a.md", res => {
+ajax.get("./source/a.md", res => {
   m2h(res)
 })
