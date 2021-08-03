@@ -51,7 +51,7 @@ let m2h = (msg) => {
 
                 currentMark = null
                 // 调用noTag作为放入p标签
-                if (lines[index - 1] === "" || lines[index-1]===undefined) {
+                if (lines[index - 1] === "" || lines[index - 1] === undefined) {
                     again = false
                     currentElement = noTag(line, element, again)
                 } else {
