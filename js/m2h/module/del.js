@@ -4,9 +4,9 @@ export default (content) => {
   let tag = true
   while (content.indexOf("~~") != -1) {
     if (tag) {
-      content = content.replace("~~", "<del>")
+      content = content.replace("~~", "<del> ")
     } else {
-      content = content.replace("~~", "</del>")
+      content = content.replace("~~", " </del>")
     }
     tag = !tag
   }

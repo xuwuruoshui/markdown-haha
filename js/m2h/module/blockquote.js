@@ -9,7 +9,7 @@ export default (line, element, again) => {
     blockQuoteElement = document.createElement('blockquote')
     childElement = blockQuoteElement
 
-    let hreg = new RegExp("^[#]{0,5}#$")
+    let hReg = new RegExp("^[#]{0,5}#$")
 
     let postion = line.indexOf(" ");
     for (let i = 1; i < words.length; i++) {
@@ -23,12 +23,15 @@ export default (line, element, again) => {
         let tempElement = document.createElement('blockquote')
         childElement.appendChild(tempElement)
         childElement = tempElement
-      } else if (hreg.test(words[i])) {
+      } else if (hReg.test(words[i])) {
         let tempElement = document.createElement("h" + words[i].length)
         childElement.appendChild(tempElement)
         childElement = tempElement
         break;
-      } else {
+      }
+      // 不符合就充值到第一个空格的postion
+      else {
+        postion = line.indexOf(" ");
         break;
       }
     }
