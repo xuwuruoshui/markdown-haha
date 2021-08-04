@@ -10,9 +10,9 @@ export default (line, element) => {
   // "- "，空格后的位置
   let position = line.indexOf(". ")
   let lineContent = line.substr(position + 2)
-  let blockquoteReg = new RegExp("^ *>*>$")
-  let hReg = new RegExp("^ *[#]{0,5}#$")
-  let ulReg = new RegExp("^ *-$")
+  let blockquoteReg = new RegExp("^\\s*>*>$")
+  let hReg = new RegExp("^\\s*[#]{0,5}#$")
+  let ulReg = new RegExp("^\\s*-$")
 
   // 判断是否有# >
   let relContent = lineContent.substr(0, lineContent.indexOf(" "))
@@ -40,14 +40,21 @@ export default (line, element) => {
 
     // 获取最后一为ol或为li的子元素
     if ((position - 1) % 2 == 0) {
-      let iterativeNumber = position / 2
+      let iterativeNumber = (position-1) / 2+1
       while (iterativeNumber >= 0) {
         currentElement = currentElement.lastChild
         iterativeNumber--
       }
-      olElement = document.createElement("ol")
-      olElement.appendChild(liElement)
-      currentElement.parentNode.appendChild(olElement)
+      // olElement = document.createElement("ol")
+      // olElement.appendChild(liElement)
+      // currentElement.parentNode.appendChild(olElement)
+      if(currentElement.localName===undefined){
+        olElement = document.createElement("ol")
+        olElement.appendChild(liElement)
+        currentElement.parentNode.appendChild(olElement)
+      }else {
+        currentElement.appendChild(liElement)
+      }
     } else {
       currentElement.parentNode.innerHTML += line.substr(position + 2)
     }

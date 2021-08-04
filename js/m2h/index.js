@@ -27,8 +27,8 @@ let m2h = (msg) => {
             }
         }
 
-        // 以空格结尾
-        let trimLeft = new RegExp("^ *")
+        // 以空格开头
+        let trimLeft = new RegExp("^\\s*")
         let tempLine = line.replace(trimLeft, "");
         let mark = tempLine.substr(0, tempLine.indexOf(" ") !== -1 ? tempLine.indexOf(" ") : tempLine.length)
         let {isContainMark, key} = isMarkInKey(mark, currentElement);

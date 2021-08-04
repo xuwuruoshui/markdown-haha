@@ -40,14 +40,19 @@ export default (line, element) => {
     let currentElement = element
     // 获取最后一为ul或为li的子元素
     if (position % 2 == 0) {
-      let iterativeNumber = position / 2
+      let iterativeNumber = (position / 2)+1
       while (iterativeNumber >= 0) {
         currentElement = currentElement.lastChild
         iterativeNumber--
       }
-      ulElement = document.createElement("ul")
-      ulElement.appendChild(liElement)
-      currentElement.parentNode.appendChild(ulElement)
+      if(currentElement.localName===undefined){
+        ulElement = document.createElement("ul")
+        ulElement.appendChild(liElement)
+        currentElement.parentNode.appendChild(ulElement)
+      }else {
+        currentElement.appendChild(liElement)
+      }
+
     } else {
       currentElement.parentNode.innerHTML += line.substr(position + 2)
     }
