@@ -45,9 +45,7 @@ export default (line, element) => {
         currentElement = currentElement.lastChild
         iterativeNumber--
       }
-      // olElement = document.createElement("ol")
-      // olElement.appendChild(liElement)
-      // currentElement.parentNode.appendChild(olElement)
+      // 为列表添加子列表，undefined就创建一个ol,存在ol就接着拼接li
       if(currentElement.localName===undefined){
         olElement = document.createElement("ol")
         olElement.appendChild(liElement)
