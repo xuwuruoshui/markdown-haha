@@ -14,24 +14,24 @@ export default (line, element, again) => {
     let postion = line.indexOf(" ");
     for (let i = 1; i < words.length; i++) {
       let tempPostion = line.indexOf(" ", postion + 1)
-      if (tempPostion != -1) {
-        postion = tempPostion
-      }
+
 
       // 判断是否为>、#、-
       if (words[i] === ">") {
         let tempElement = document.createElement('blockquote')
         childElement.appendChild(tempElement)
         childElement = tempElement
+        if (tempPostion != -1) {
+          postion = tempPostion
+        }
       } else if (hReg.test(words[i])) {
         let tempElement = document.createElement("h" + words[i].length)
         childElement.appendChild(tempElement)
         childElement = tempElement
         break;
       }
-      // 不符合就充值到第一个空格的postion
+      // 不符合就赋值到第一个空格的postion
       else {
-        postion = line.indexOf(" ");
         break;
       }
     }
