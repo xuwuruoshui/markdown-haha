@@ -11,7 +11,7 @@ export default (content) => {
     while ((start = content.search(linkReg)) !== -1 && (start === 0 || (content.charAt(start - 1) !== `"` && content.charAt(start - 1) !== ":"))) {
 
         // 字上存在链接的
-        let textLinkReg = new RegExp("\\[[^]+\\]\\(<?(s*ww+@w+.w|http[s]?://.*)>?\\s?([\"']?[^]+[\"']?\\s+)?\\)")
+        let textLinkReg = new RegExp("\\[.*[^]+\\]\\(<?(s*ww+@w+.w|http[s]?://.*)>?\\s?([\"']?[^]+[\"']?\\s+)?\\)")
         // 带尖括号的链接
         let linkReg1 = new RegExp("<\\s*(\\w\\w+@\\w+\\.\\w|http[s]?://.*)\\s*>")
         // 普通的链接

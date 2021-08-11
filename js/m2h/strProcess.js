@@ -10,6 +10,7 @@ import pre from './module/pre.js'
 
 import noTag from './module/p.js'
 import a from './module/a.js'
+import img from './module/img.js'
 
 // 转换的标识符对应关系
 let outside = {
@@ -22,15 +23,16 @@ let outside = {
 }
 
 // TODO "^\\|.*\\|$"
-
+new RegExp()
 // 部分文字上的处理
 let inside = {
     "\\*\\*": strong,
     "\\~\\~": del,
     "\\_": em,
+    "!\\[.+\\]\\(.+\\s*((\"|'){1}.+(\"|'){1})+\\)": img,
     "\\s*\\w\\w+@\\w+\\.\\w|http[s]?://": a,
 
 }
 
 
-export {outside, inside, noTag}
+export { outside, inside, noTag }
