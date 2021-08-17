@@ -1,6 +1,7 @@
 import h from './h.js'
 import blockquote from './blockquote.js'
 import ul from './ul.js'
+import p from './p.js'
 
 export default (line, element) => {
 
@@ -27,7 +28,11 @@ export default (line, element) => {
   }
 
   // ol比ul多了个字符,所以position的位置-1
-  if ((position - 1) == 0) {
+  if (position === -1) {
+    p(line, element)
+    return element
+  }
+  else if ((position - 1) === 0) {
     if (element.lastChild.localName !== "ol") {
       olElement = document.createElement("ol")
       element.appendChild(olElement)

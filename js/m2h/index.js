@@ -1,12 +1,11 @@
-import {inside, outside, noTag} from './strProcess.js'
-
-// 获取当前元素
-let element = document.getElementById("content");
+import { inside, outside, noTag } from './strProcess.js'
 
 
-let m2h = (msg) => {
+
+let m2h = (msg, element) => {
+
     // 按行分割字符串
-    let lines = msg.split("\r\n")
+    let lines = msg.split("\n")
 
     // 当前行正在处理的标识符
     let currentMark = null;
@@ -31,7 +30,7 @@ let m2h = (msg) => {
         let trimLeft = new RegExp("^\\s*")
         let tempLine = line.replace(trimLeft, "");
         let mark = tempLine.substr(0, tempLine.indexOf(" ") !== -1 ? tempLine.indexOf(" ") : tempLine.length)
-        let {isContainMark, key} = isMarkInKey(mark, currentElement);
+        let { isContainMark, key } = isMarkInKey(mark, currentElement);
 
         // 判断是否包含有转换的标签
         if (isContainMark) {
@@ -82,7 +81,7 @@ function isMarkInKey(mark, currentElement) {
             break;
         }
     }
-    return {isContainMark, key};
+    return { isContainMark, key };
 }
 
 export default m2h

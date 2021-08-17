@@ -1,6 +1,7 @@
 import h from './h.js'
 import blockquote from './blockquote.js'
 import ol from './ol.js'
+import p from './p.js'
 
 export default (line, element) => {
 
@@ -31,9 +32,11 @@ export default (line, element) => {
     liElement.innerHTML = lineContent
   }
 
-
-  if (position == 0) {
-    if (element.lastChild.localName !== "ul") {
+  if (position === -1) {
+    p(line, element)
+    return element
+  } else if (position === 0) {
+    if (element.lastChild === null || element.lastChild.localName !== "ul") {
       ulElement = document.createElement("ul")
       element.appendChild(ulElement)
     } else {

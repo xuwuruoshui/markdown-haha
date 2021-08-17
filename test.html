@@ -6,13 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #test {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #edit {
+            width: 50%;
+            height: auto;
+            border: 1px solid;
+            font-size: 20px;
+        }
+
+        #content {
+            width: 50%;
+            height: 100%;
+            height: auto;
+            border: 1px solid;
+        }
+    </style>
 </head>
 
 <body>
-<div id="content">
-</div>
-
+    <div id="test">
+        <textarea id="edit"></textarea>
+        <div id="content"></div>
+    </div>
 </body>
 <script type="module" src="./js/index.js"></script>
+<script type="module">
+    import m2h from './js/m2h/index.js'
+    import ajax from './js/request/ajax.js'
+    let edit = document.getElementById("edit");
+    let content = document.getElementById("content");
+
+
+    window.onload = () => {
+
+        ajax.get("./source/a.md", res => {
+            edit.value = res
+            m2h(edit.value, content)
+        })
+    }
+
+    edit.onkeyup = () => {
+        content.innerHTML = null
+        let txt = edit.value
+        //console.log(txt);
+        m2h(txt, content)
+    }
+</script>
 
 </html>
