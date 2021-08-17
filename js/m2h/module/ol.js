@@ -40,17 +40,17 @@ export default (line, element) => {
 
     // 获取最后一为ol或为li的子元素
     if ((position - 1) % 2 == 0) {
-      let iterativeNumber = (position-1) / 2+1
+      let iterativeNumber = (position - 1) / 2 + 1
       while (iterativeNumber >= 0) {
         currentElement = currentElement.lastChild
         iterativeNumber--
       }
       // 为列表添加子列表，undefined就创建一个ol,存在ol就接着拼接li
-      if(currentElement.localName===undefined){
+      if (currentElement.localName === undefined || currentElement.localName === "li") {
         olElement = document.createElement("ol")
         olElement.appendChild(liElement)
         currentElement.parentNode.appendChild(olElement)
-      }else {
+      } else {
         currentElement.appendChild(liElement)
       }
     } else {
