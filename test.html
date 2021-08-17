@@ -34,7 +34,6 @@
         <div id="content"></div>
     </div>
 </body>
-<script type="module" src="./js/index.js"></script>
 <script type="module">
     import m2h from './js/m2h/index.js'
     import ajax from './js/request/ajax.js'
@@ -42,13 +41,13 @@
     let content = document.getElementById("content");
 
 
-    window.onload = () => {
+    // window.onload = () => {
 
-        ajax.get("./source/a.md", res => {
-            edit.value = res
-            m2h(edit.value, content)
-        })
-    }
+    //     ajax.get("./source/a.md", res => {
+    //         edit.value = res
+    //         m2h(edit.value, content)
+    //     })
+    // }
 
     edit.onkeyup = () => {
         content.innerHTML = null

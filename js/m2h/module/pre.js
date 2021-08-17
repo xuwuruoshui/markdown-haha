@@ -17,7 +17,7 @@ export default (line, element, again) => {
             p(line, element, false)
         } else {
             codeBlockElement = element
-            codeBlockElement.innerHTML += (line + "\r\n")
+            codeBlockElement.innerText += (line + "\r\n")
         }
         return codeBlockElement
     }

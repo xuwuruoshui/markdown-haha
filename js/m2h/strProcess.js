@@ -11,6 +11,7 @@ import pre from './module/pre.js'
 import noTag from './module/p.js'
 import a from './module/a.js'
 import img from './module/img.js'
+import code from './module/code.js'
 
 // 转换的标识符对应关系
 let outside = {
@@ -29,9 +30,9 @@ let inside = {
     "\\*\\*": strong,
     "\\~\\~": del,
     "\\_": em,
+    "`[^`].*`": code,
     "!\\[.+\\]\\(.+\\s*((\"|'){1}.+(\"|'){1})+\\)": img,
-    "\\s*\\w\\w+@\\w+\\.\\w|http[s]?://": a,
-
+    "\\s*\\w\\w+@\\w+\\.\\w|http[s]?://": a
 }
 
 
