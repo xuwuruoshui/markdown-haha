@@ -1,0 +1,28 @@
+pre {
+    flex-direction: column;
+    border: 3px solid #f5a623;
+    border-radius: 3px;
+    font-size: 25px;
+}
+
+#codeTitle {
+    display: flex;
+    justify-content: space-between;
+    background: #282C34;
+    color: #c0bebc;
+}
+
+#type{
+    margin: 2px;
+}
+
+#copy{
+    color: black;
+    background: white;
+    border-radius: 2px;
+    margin: 2px;
+}
+
+code {
+    flex-grow: 8;
+}
