@@ -11,13 +11,16 @@ export default (line, element, again) => {
             // 格式与复制按钮
             let title = document.createElement("div")
             title.setAttribute("id", "codeTitle")
+
             let typeSpan = document.createElement("span");
             typeSpan.setAttribute("id","type")
             typeSpan.innerText = line.substring(3)
+
             let copyBtn = document.createElement("button");
             copyBtn.setAttribute("id", "copy")
             copyBtn.setAttribute("onclick", "copy()")
-            copyBtn.innerText = "复制"
+            copyBtn.innerText = "copy"
+
             title.appendChild(typeSpan)
             title.appendChild(copyBtn)
             preElement.appendChild(title)

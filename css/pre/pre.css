@@ -1,0 +1,42 @@
+pre {
+    width: 95%;
+    height: auto;
+    margin: 0.5rem auto;
+    background: #282C34;
+    font-size: 1rem;
+    box-shadow:0px 0px 2px #4C637E;
+    border-radius: 5px;
+    border: 2px solid #4C637E;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#codeTitle {
+    display: flex;
+    justify-content: space-between;
+    background: #282C34;
+    color: #c0bebc;
+}
+
+#type{
+    margin: 2px;
+    font-size: 0.7rem;
+}
+
+#copy{
+    color: #e3e3e3;
+    background: rgba(178, 178, 178, 0.3);
+    border: 1px solid rgba(178, 178, 178, 0.3);
+    border-radius: 2px;
+    margin: 2px;
+}
+
+#copy:hover{
+    color: #ffffff;
+    background: rgba(178, 178, 178, 0.9);
+    border: 1px solid rgba(178, 178, 178, 0.9);
+}
+
+code {
+    flex-grow: 8;
+}

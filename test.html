@@ -6,27 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="plugins/highlight/highlight.min.js"></script>
-    <script src="plugins/copytoclickboard/index.js"></script>
     <link rel="stylesheet" href="plugins/highlight/styles/atom-one-dark.min.css">
-    <link rel="stylesheet" href="plugins/copytoclickboard/index.css">
+    <link rel="stylesheet" href="css/index.css">
     <style>
         #test {
             display: flex;
             justify-content: space-around;
+            font-size: 1rem;
         }
 
         #edit {
-            width: 50%;
-            height: 600px;
+            height: 15rem;
+            width: 48%;
             border: 1px solid;
-            font-size: 20px;
+            border:3px solid #e2e7e7;
+            border-radius: 5px;
+            font-size: 0.8rem;
         }
 
         #content {
-            width: 50%;
-            height: 600px;
-            border: 1px solid;
+            height: 15rem;
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+            background: #141B28;
         }
     </style>
 </head>
@@ -37,6 +40,9 @@
         <div id="content"></div>
     </div>
 </body>
+<script src="plugins/highlight/highlight.min.js"></script>
+<script src="plugins/copytoclickboard/index.js"></script>
+<script src="js/index.js"></script>
 <script type="module">
     import m2h from './plugins/m2h/index.js'
     import ajax from './plugins/request/ajax.js'
@@ -70,24 +76,4 @@
     });
 
 </script>
-<script>
-    let copy = () => {
-        let copyBtn = document.getElementById("copy");
-        if (copyBtn.innerText === "完成复制") {
-            return;
-        }
-
-        let copyConetnt = copyBtn.parentNode.parentNode.children[1]
-
-        if (document.execCommand('Copy')) {
-            copyToClipboard(copyConetnt.innerText)
-            copyBtn.innerText = "完成复制";
-            setTimeout(() => {
-                copyBtn.innerText = "复制"
-            }, 1000)
-        }
-
-    }
-</script>
-
 </html>
